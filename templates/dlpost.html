@@ -1,0 +1,19 @@
+
+{% block body %}
+
+<div class="container">
+
+    <h1 class='my-3'>{{dl.title}}</h1>
+
+    <div class="row">
+
+        {{dl.content|safe}}
+    </div>
+</div>
+
+<div class="text-center">
+    <button class="btn btn-success" style="text-align: center;justify-content: center;"><a class = 'text-light'href="/">Previous Page</a></button>
+</div>
+
+
+{% endblock body %}

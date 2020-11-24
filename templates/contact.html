@@ -1,0 +1,66 @@
+{% extends 'base.html' %} {% block contactactive %}active{% endblock contactactive %}
+
+<!-- Extra Css for the Container class -->
+
+
+{% block css %}
+
+<style>
+    /* vh is viewportheight,the one which is visible one the screen,or the one which is viewed on the browser */
+    
+    .container {
+        min-height: 100vh;
+    }
+</style>
+
+{% endblock css %} {% block body %}
+
+<div class="container my-4">
+
+    <h1 class="py-3" style="text-align: center;">Contact us</h1>
+
+    <!-- Any backend will identify the "name" to identify the attribute so we need to declare the "name" -->
+
+    <!-- the "id" attribute is used,iin case if you wanna add js to that component,we need "id" in that case! -->
+
+    <!-- the attributes "for","id" and "name" must be same!!,and when you're form is recieving a POST request,then in django we need to declare the view corresponding to that request in "/ <view_name> /" tailended slashes,i.e "/contact/"" as shown below ↓,and also we have to give the 'csrf token' csrf is cross site request frogery,in order to make sure that the request i.e let it be POST or GET,if it is coming from the same website,for that verification,every website supplies a `CSRF token`,so looking at this csrf token,the django engine will come to know that this request has come from this website only as the csrf token is matched!!,so csrf token kind of provides security to your website-->
+
+    <form method='POST' action="/contact/">
+       {% csrf_token %}
+
+        <!-- Name of the user -->
+
+
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="Enter Your Name">
+        </div>
+
+        <!-- Email Address -->
+
+
+        <div class="form-group">
+            <label for="email">Email address</label>
+            <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp">
+        </div>
+
+        <!-- Phone Number -->
+
+
+        <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" class="form-control" id="phone" name="phone" placeholder="Enter Your Phone Number">
+        </div>
+
+        <!-- Text-Area -->
+        <div class="form-group">
+            <label for="desc">If you want to share your blog kindly share the short description ↓</label>
+            <textarea class="form-control" id="desc" name="desc" rows="3"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+</div>
+
+
+{% endblock body %}
